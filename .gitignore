@@ -1,5 +1,5 @@
-backend/node_modules/*
-backend/yarn.lock
-mern-todo-app/node_modules/*
-mern-todo-app/yarn.lock
+server/node_modules/*
+server/yarn.lock
+client/node_modules/*
+client/yarn.lock
 
