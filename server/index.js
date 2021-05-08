@@ -3,13 +3,19 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
+const path = require("path");
 const todoRoutes = express.Router();
 
 let Todo = require("./todo.model");
 
 app.use(cors());
 app.use(bodyParser.json());
+
+if (process.env.NODE_ENV === "production") {
+  //server static content
+  app.use(express.static(path.join(__dirname, "client/build")));
+}
 
 mongoose.connect("mongodb://127.0.0.1:27017/todos", { useNewUrlParser: true });
 const connection = mongoose.connection;
